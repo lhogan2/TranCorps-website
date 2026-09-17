@@ -36,6 +36,7 @@ header {
     padding: 16px 24px;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .brand {
@@ -66,6 +67,14 @@ header {
     color: white;
 }
 
+.menu-button {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
 
 .hero {
     position: relative;
@@ -230,7 +239,6 @@ header {
     line-height: 1.55;
 }
 
-
 .contact {
     max-width: 1060px;
     margin: 20px auto 80px;
@@ -245,7 +253,6 @@ header {
     margin: 0;
     font-size: 36px;
 }
-
 
 .jobs-card {
     max-width: 665px;
@@ -274,7 +281,6 @@ header {
     color: var(--blue);
     font-size: 26px;
 }
-
 
 .contact-info {
     max-width: 665px;
@@ -307,7 +313,6 @@ header {
     color: var(--blue);
 }
 
-
 footer {
     padding: 24px;
     background: var(--nav);
@@ -320,7 +325,6 @@ footer p {
     color: var(--text);
     font-size: 14px;
 }
-
 
 @media (max-width: 900px) {
 
@@ -358,8 +362,12 @@ footer p {
     }
 }
 
-
 @media (max-width: 650px) {
+
+    .menu-button {
+    display: block;
+    margin-left: auto;
+    }
 
     .navbar {
         padding: 16px;
@@ -370,11 +378,28 @@ footer p {
     }
 
     .nav-links {
-        gap: 16px;
+        display: none;
+        position: fixed;
+        height: calc(100vh - 72px);
+        top: 72px;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        padding: 60px, 24px;
+        background: #071925;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .nav-links.show {
+        display: flex;
     }
 
     .nav-links a {
-        font-size: 15px;
+        font-size: 26px;
+        text-align: center;
     }
 
     .hero {
