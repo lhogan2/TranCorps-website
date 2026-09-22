@@ -17,7 +17,13 @@
             <img src="images/TranCorps_Logo_Clear.webp" alt="TranCorps logo" class="nav-logo">
             <span>TranCorps Consulting</span>
         </div>
-        <button class="menu-button" onclick="toggleMenu()">☰</button>
+        <button class="menu-button"
+            onclick="toggleMenu()"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="navLinks">
+        ☰
+        </button>
         <div class="nav-links" id="navLinks">
             <a href="#home">Home</a>
             <a href="#about">About</a>
@@ -188,12 +194,22 @@
 <footer>
     <p>© 2026 TranCorps Consulting</p>
     <p>All Rights Reserved.</p>
-    <p>ADA Compliant</p>
 </footer>
 
 <script>
 function toggleMenu() {
-    document.getElementById("navLinks").classList.toggle("show");
+    const menu = document.getElementById("navLinks");
+    const button = document.querySelector(".menu-button");
+
+    menu.classList.toggle("show");
+
+    if (menu.classList.contains("show")) {
+        button.setAttribute("aria-expanded", "true");
+        button.setAttribute("aria-label", "Close navigation menu");
+    } else {
+        button.setAttribute("aria-expanded", "false");
+        button.setAttribute("aria-label", "Open navigation menu");
+    }
 }
 </script>
 
