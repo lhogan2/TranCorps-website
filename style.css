@@ -402,12 +402,7 @@ footer p {
 
     .nav-links.show {
         display: flex;
-    }
-
-    .nav-links a {
-        font-size: 26px;
-        text-align: center;
-    }
+    } 
 
     .hero {
         height: 300px;
