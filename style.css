@@ -1,11 +1,14 @@
 :root {
     --blue: #00a6d6;
+    --bright-blue: #38bdf8;
     --dark: #06131f;
     --nav: #071925;
     --card: #0b1d2a;
     --border: #132b3b;
+    --border-light: #64748b;
     --text: #b8cddd;
     --light-blue: #9fc7dd;
+    --chevron: #062431;
 }
 
 * {
@@ -17,17 +20,22 @@ html {
     scroll-padding-top: 80px;
 }
 
-a:focus,
-button:focus {
-    outline: 2px solid #00a6d6;
-    outline-offset: 4px;
-}
-
 body {
     margin: 0;
     background: var(--dark);
     color: white;
-    font-family: eurostile, Arial, sans-serif;
+    font-family: Eurostile, "Segoe UI", Arial, sans-serif;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 4px;
 }
 
 header {
@@ -35,10 +43,12 @@ header {
     top: 0;
     z-index: 1000;
     background: var(--nav);
+    border-bottom: 1px solid var(--border);
 }
 
 .navbar {
     max-width: 1200px;
+    min-height: 72px;
     margin: auto;
     padding: 16px 24px;
     display: flex;
@@ -49,18 +59,23 @@ header {
 .brand {
     display: flex;
     align-items: center;
+    color: white;
     font-size: 18px;
     font-weight: 700;
+    text-decoration: none;
 }
 
 .nav-logo {
     width: 40px;
-    margin-right: 8px;
+    height: 40px;
+    object-fit: contain;
+    margin-right: 10px;
 }
 
 .nav-links {
     margin-left: auto;
     display: flex;
+    align-items: center;
     gap: 40px;
 }
 
@@ -76,18 +91,23 @@ header {
 
 .menu-button {
     display: none;
+    margin-left: auto;
     background: none;
     border: none;
     color: white;
     font-size: 30px;
+    line-height: 1;
     cursor: pointer;
 }
 
 .hero {
     position: relative;
-    height: 520px;
+    min-height: 620px;
     overflow: hidden;
     background: var(--card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .arrows {
@@ -95,6 +115,7 @@ header {
     top: 0;
     width: 210px;
     height: 100%;
+    pointer-events: none;
 }
 
 .arrow-left {
@@ -111,8 +132,16 @@ header {
     top: 0;
     width: 100px;
     height: 100%;
-    background: #062431;
-    clip-path: polygon(0 0, 35% 0, 100% 50%, 35% 100%, 0 100%, 65% 50%);
+    background: var(--chevron);
+
+    clip-path: polygon(
+        0 0,
+        35% 0,
+        100% 50%,
+        35% 100%,
+        0 100%,
+        65% 50%
+    );
 }
 
 .chevron-one {
@@ -124,126 +153,229 @@ header {
 }
 
 .hero-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    z-index: 5;
+    width: min(900px, calc(100% - 360px));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
 .hero-logo {
     width: 300px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
-.tagline {
-    margin: 16px 0 0;
-    color: var(--light-blue);
-    font-size: 18px;
-    letter-spacing: 2px;
+.skill-pills {
+    width: 100%;
+    max-width: 850px;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
 }
 
+.pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 9px 16px;
+    background: rgba(11, 29, 42, 0.80);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    user-select: none;
+    cursor: default;
+}
+
+.pill.primary {
+    color: var(--bright-blue);
+    border-color: #2563eb;
+    background: rgba(37, 99, 235, 0.12);
+}
 
 .about {
     max-width: 1200px;
-    margin: auto;
-    padding: 80px 40px;
+    margin: 0 auto;
+    padding: 70px 40px 80px;
     display: grid;
-    grid-template-columns: 1fr 1.35fr;
-    gap: 80px;
+    grid-template-columns: 380px 1fr;
+    gap: 64px;
+    align-items: center;
+}
+
+.about-profile-card {
+    width: 100%;
+    max-width: 380px;
+    overflow: hidden;
+    border: 1px solid #64748b;
+    border-radius: 12px;
+    background: #101827;
+}
+
+.profile-image-wrapper {
+    width: 100%;
+    background: #101827;
+}
+
+.profile-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.profile-details {
+    padding: 18px 20px;
+    background: #1e293b;
+    text-align: center;
+}
+
+.profile-details h3 {
+    margin: 0;
+    color: white;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.about-content {
+    width: 100%;
 }
 
 .section-label {
-    margin: 0 0 16px;
-    color: var(--blue);
-    font-size: 18px;
-    letter-spacing: 3px;
+    margin: 0 0 12px;
+    color: #00b7ff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
 }
 
 .about-heading {
-    margin: 0;
-    font-size: 34px;
-    line-height: 1.15;
+    margin: 0 0 22px;
+    color: white;
+    font-size: 36px;
+    line-height: 1.25;
 }
 
 .about-text {
-    margin: 24px 0 0;
+    max-width: 660px;
+    margin: 0 0 32px;
     color: var(--text);
     font-size: 17px;
-    line-height: 1.55;
+    line-height: 1.6;
 }
 
+.about-text strong {
+    color: var(--text);
+    font-weight: 700;
+}
 
 .info-grid {
-    margin-top: 40px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
 .info-card {
-    min-height: 100px;
-    padding: 16px;
+    min-height: 82px;
+    padding: 18px 16px;
     display: flex;
     align-items: center;
-    gap: 16px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    gap: 18px;
+    background: #101827;
+    border: 1px solid #334155;
+    border-radius: 9px;
+    user-select: none;
+    cursor: default;
 }
 
-.icon {
-    color: var(--blue);
-    font-size: 20px;
+.info-icon {
+    width: 18px;
+    flex-shrink: 0;
+    color: #00b7ff;
+    font-size: 21px;
+    text-align: center;
+}
+
+.check-icon {
+    font-size: 26px;
 }
 
 .info-card p {
-    margin: 0 0 8px;
+    margin: 0 0 4px;
     color: var(--light-blue);
-    font-size: 11px;
-    letter-spacing: 1px;
+    font-size: 12px;
 }
 
 .info-card h3 {
     margin: 0;
-    font-size: 16px;
-}
-
-
-.services {
-    padding: 24px;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    align-self: center;
-}
-
-.service {
-    display: flex;
-    gap: 16px;
-    padding: 16px 0 40px;
-}
-
-.service:last-child {
-    padding-bottom: 16px;
-}
-
-.service h3,
-.jobs-text h3 {
-    margin: 0 0 8px;
     color: white;
     font-size: 18px;
 }
 
-.service p,
-.jobs-text p {
+.services-section {
+    width: 100%;
+    padding: 0 40px 80px;
+    background: var(--dark);
+}
+
+.services-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.service-card {
+    min-height: 150px;
+    padding: 28px 26px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: #1e293b;
+    border: 1px solid #64748b;
+    border-radius: 12px;
+    user-select: none;
+    cursor: default;
+}
+
+.service-icon {
+    flex-shrink: 0;
+    width: 22px;
+    color: #00b7ff;
+    font-size: 25px;
+    line-height: 1;
+    text-align: center;
+}
+
+.service-content {
+    flex: 1;
+}
+
+.service-content h3 {
+    margin: 0 0 7px;
+    color: white;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.service-content p {
     margin: 0;
     color: var(--text);
-    font-size: 15px;
-    line-height: 1.55;
+    font-size: 14px;
+    line-height: 1.65;
 }
 
 .contact {
@@ -258,6 +390,7 @@ header {
 
 .contact h2 {
     margin: 0;
+    color: white;
     font-size: 36px;
 }
 
@@ -269,9 +402,14 @@ header {
     justify-content: space-between;
     align-items: center;
     background: var(--dark);
+    border: 1px solid transparent;
     border-radius: 16px;
     color: white;
     text-decoration: none;
+}
+
+.jobs-card:hover {
+    border-color: var(--blue);
 }
 
 .jobs-left {
@@ -280,11 +418,31 @@ header {
     gap: 16px;
 }
 
+.icon {
+    flex-shrink: 0;
+    color: var(--blue);
+    font-size: 20px;
+}
+
 .jobs-text {
     text-align: left;
 }
 
+.jobs-text h3 {
+    margin: 0 0 8px;
+    color: white;
+    font-size: 18px;
+}
+
+.jobs-text p {
+    margin: 0;
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.55;
+}
+
 .jobs-arrow {
+    flex-shrink: 0;
     color: var(--blue);
     font-size: 26px;
 }
@@ -295,13 +453,14 @@ header {
     padding-top: 24px;
     border-top: 1px solid var(--border);
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    text-align: center;
 }
 
 .contact-label {
     margin: 0 0 8px;
-    color: var(--blue);
+    color: var(--blue) !important;
     font-size: 12px;
     letter-spacing: 2px;
 }
@@ -312,7 +471,7 @@ header {
 }
 
 .contact-info a {
-    color: white;
+    color: var(--text);
     text-decoration: none;
 }
 
@@ -333,15 +492,28 @@ footer p {
     font-size: 14px;
 }
 
-@media (max-width: 900px) {
-
-    .about {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
+@media (max-width: 1000px) {
 
     .hero {
-        height: 400px;
+        min-height: 600px;
+    }
+
+    .hero-center {
+        width: min(650px, calc(100% - 220px));
+    }
+
+    .hero-logo {
+        width: 250px;
+    }
+
+    .skill-pills {
+        margin-top: 40px;
+        gap: 9px;
+    }
+
+    .pill {
+        padding: 8px 12px;
+        font-size: 12px;
     }
 
     .arrows {
@@ -364,17 +536,46 @@ footer p {
         left: 44px;
     }
 
-    .hero-logo {
-        width: 240px;
+    .about {
+        grid-template-columns: 320px 1fr;
+        gap: 40px;
+        padding: 60px 30px;
+    }
+
+    .about-heading {
+        font-size: 31px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        max-width: 700px;
+    }
+
+    .service-card {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .about {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .about-profile-card {
+        width: 100%;
+        max-width: 380px;
+        margin: 0 auto;
+    }
+
+    .about-content {
+        max-width: 650px;
+        margin: 0 auto;
     }
 }
 
 @media (max-width: 650px) {
-
-    .menu-button {
-    display: block;
-    margin-left: auto;
-    }
 
     .navbar {
         padding: 16px;
@@ -384,16 +585,26 @@ footer p {
         font-size: 15px;
     }
 
+    .nav-logo {
+        width: 34px;
+        height: 34px;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
     .nav-links {
         display: none;
         position: fixed;
-        height: calc(100vh - 72px);
-        top: 72px;
+        z-index: 999;
+        top: 67px;
         left: 0;
         width: 100%;
+        height: calc(100vh - 67px);
         margin: 0;
-        padding: 60px, 24px;
-        background: #071925;
+        padding: 60px 24px;
+        background: var(--nav);
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -402,14 +613,28 @@ footer p {
 
     .nav-links.show {
         display: flex;
-    } 
+    }
+
+    .nav-links a {
+        font-size: 22px;
+    }
 
     .hero {
-        height: 300px;
+        min-height: 610px;
+        padding: 60px 20px;
+    }
+
+    .hero-center {
+        width: calc(100% - 40px);
+    }
+
+    .hero-logo {
+        width: 190px;
     }
 
     .arrows {
         width: 85px;
+        opacity: 0.30;
     }
 
     .arrow-left {
@@ -428,30 +653,110 @@ footer p {
         left: 28px;
     }
 
-    .hero-logo {
-        width: 180px;
+    .skill-pills {
+        margin-top: 35px;
+        gap: 8px;
     }
 
-    .tagline {
-        font-size: 13px;
-        letter-spacing: 1px;
+    .pill {
+        min-height: 36px;
+        padding: 8px 10px;
+        font-size: 11px;
+        white-space: normal;
     }
 
     .about {
-        padding: 80px 20px;
+        padding: 55px 20px 70px;
+    }
+
+    .about-profile-card {
+        max-width: 340px;
+    }
+
+    .profile-details {
+        padding: 16px;
+    }
+
+    .profile-details h3 {
+        font-size: 20px;
+    }
+
+    .about-heading {
+        font-size: 29px;
+    }
+
+    .about-text {
+        font-size: 16px;
     }
 
     .info-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .info-card {
+        min-height: 80px;
+    }
+
+    .services-section {
+        padding: 0 20px 60px;
+    }
+
+    .services-grid {
+        gap: 14px;
+    }
+
+    .service-card {
+        padding: 22px 20px;
+    }
+
+    .service-content h3 {
+        font-size: 18px;
+    }
+
+    .service-content p {
+        font-size: 14px;
     }
 
     .contact {
-        margin: 20px;
+        margin: 20px 20px 60px;
         padding: 40px 24px;
+    }
+
+    .contact h2 {
+        font-size: 30px;
+    }
+
+    .jobs-card {
+        padding: 16px;
     }
 
     .contact-info {
         grid-template-columns: 1fr;
         gap: 24px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .brand span {
+        font-size: 13px;
+    }
+
+    .hero {
+        min-height: 650px;
+    }
+
+    .hero-logo {
+        width: 165px;
+    }
+
+    .skill-pills {
+        margin-top: 30px;
+    }
+
+    .pill {
+        width: 100%;
+        max-width: 280px;
     }
 }
