@@ -100,6 +100,8 @@ header {
     cursor: pointer;
 }
 
+/* HOME SECTION */
+
 .hero {
     position: relative;
     min-height: 620px;
@@ -108,6 +110,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 70px 20px;
 }
 
 .arrows {
@@ -155,7 +158,7 @@ header {
 .hero-center {
     position: relative;
     z-index: 5;
-    width: min(900px, calc(100% - 360px));
+    width: min(1000px, calc(100% - 80px));
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -163,59 +166,94 @@ header {
     text-align: center;
 }
 
-.hero-logo {
-    width: 300px;
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
+.hero-label {
+    margin: 0 0 22px;
+    color: var(--blue);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
 }
 
-.skill-pills {
-    width: 100%;
-    max-width: 850px;
-    margin-top: 50px;
+.hero-heading {
+    margin: 0 0 24px;
+    color: white;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+}
+
+.hero-description {
+    max-width: 580px;
+    margin: 0 auto 32px;
+    color: var(--text);
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.hero-buttons {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
 }
 
-.pill {
+.hero-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 40px;
-    padding: 9px 16px;
-    background: rgba(11, 29, 42, 0.80);
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
-    color: white;
+    min-height: 44px;
+    padding: 12px 22px;
+    border-radius: 7px;
     font-size: 14px;
-    font-weight: 600;
-    line-height: 1.2;
-    white-space: nowrap;
-    user-select: none;
-    cursor: default;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s ease,
+                border-color 0.2s ease;
 }
 
-.pill.primary {
-    color: var(--bright-blue);
-    border-color: #2563eb;
-    background: rgba(37, 99, 235, 0.12);
+.primary-btn {
+    background: #20b4df;
+    border: 1px solid #20b4df;
+    color: white;
+}
+
+.primary-btn:hover {
+    background: #0891b2;
+    border-color: #0891b2;
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 1px solid #64748b;
+    color: white;
+}
+
+.secondary-btn:hover {
+    background: #1e293b;
+    border-color: #38bdf8;
 }
 
 .about {
     max-width: 1200px;
     margin: 0 auto;
     padding: 70px 40px 80px;
+
     display: grid;
-    grid-template-columns: 380px 1fr;
-    gap: 64px;
+    grid-template-columns: 380px minmax(0, 1fr);
+    grid-template-areas:
+        "profile content"
+        "certs   .";
+
+    column-gap: 64px;
+    row-gap: 22px;
+
     align-items: center;
 }
 
 .about-profile-card {
+    grid-area: profile;
     width: 100%;
     max-width: 380px;
     overflow: hidden;
@@ -249,8 +287,58 @@ header {
     font-weight: 700;
 }
 
-.about-content {
+.profile-details p {
+    margin: 6px 0 0;
+    color: var(--light-blue);
+    font-size: 13px;
+}
+
+.about-certifications {
+    grid-area: certs;
     width: 100%;
+    max-width: 380px;
+    align-self: start;
+}
+
+.about-certifications h4 {
+    margin: 0 0 14px;
+    color: var(--light-blue);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.about-skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.about-skill-pills .pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 9px 12px;
+    background: rgba(11, 29, 42, 0.80);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: normal;
+    user-select: none;
+    cursor: default;
+}
+
+.about-content {
+    grid-area: content;
+    width: 100%;
+    min-width: 0;
+    align-self: center;
 }
 
 .section-label {
@@ -283,7 +371,7 @@ header {
 
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
 }
 
@@ -498,24 +586,6 @@ footer p {
         min-height: 600px;
     }
 
-    .hero-center {
-        width: min(650px, calc(100% - 220px));
-    }
-
-    .hero-logo {
-        width: 250px;
-    }
-
-    .skill-pills {
-        margin-top: 40px;
-        gap: 9px;
-    }
-
-    .pill {
-        padding: 8px 12px;
-        font-size: 12px;
-    }
-
     .arrows {
         width: 140px;
     }
@@ -537,8 +607,8 @@ footer p {
     }
 
     .about {
-        grid-template-columns: 320px 1fr;
-        gap: 40px;
+        grid-template-columns: 320px minmax(0, 1fr);
+        column-gap: 40px;
         padding: 60px 30px;
     }
 
@@ -559,19 +629,28 @@ footer p {
 @media (max-width: 800px) {
 
     .about {
-        grid-template-columns: 1fr;
-        gap: 45px;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "profile"
+            "certs"
+            "content";
+
+        row-gap: 22px;
     }
 
     .about-profile-card {
-        width: 100%;
+        max-width: 380px;
+        margin: 0 auto;
+    }
+
+    .about-certifications {
         max-width: 380px;
         margin: 0 auto;
     }
 
     .about-content {
         max-width: 650px;
-        margin: 0 auto;
+        margin: 23px auto 0;
     }
 }
 
@@ -625,11 +704,32 @@ footer p {
     }
 
     .hero-center {
-        width: calc(100% - 40px);
+        width: 100%;
     }
 
-    .hero-logo {
-        width: 190px;
+    .hero-label {
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    .hero-heading {
+        font-size: clamp(30px, 8vw, 42px);
+        letter-spacing: -0.5px;
+        line-height: 1.15;
+    }
+
+    .hero-description {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .hero-buttons {
+        gap: 12px;
+    }
+
+    .hero-btn {
+        font-size: 13px;
+        padding: 12px 16px;
     }
 
     .arrows {
@@ -653,23 +753,12 @@ footer p {
         left: 28px;
     }
 
-    .skill-pills {
-        margin-top: 35px;
-        gap: 8px;
-    }
-
-    .pill {
-        min-height: 36px;
-        padding: 8px 10px;
-        font-size: 11px;
-        white-space: normal;
-    }
-
     .about {
         padding: 55px 20px 70px;
     }
 
-    .about-profile-card {
+    .about-profile-card,
+    .about-certifications {
         max-width: 340px;
     }
 
@@ -747,16 +836,23 @@ footer p {
         min-height: 650px;
     }
 
-    .hero-logo {
-        width: 165px;
+    .about-skill-pills {
+        gap: 7px;
     }
 
-    .skill-pills {
-        margin-top: 30px;
+    .about-skill-pills .pill {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
     }
 
-    .pill {
-        width: 100%;
-        max-width: 280px;
+    .hero-btn {
+        transition: none;
     }
 }
